@@ -19,7 +19,7 @@ function run(client, message, arguments) {
     }
 
     if (!availablePassives.includes(arguments[0])) {
-        message.reply('No passive found!')
+        message.reply('No passive found!').catch(() => {})
         return
     }
 
