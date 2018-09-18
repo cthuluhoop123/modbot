@@ -14,7 +14,7 @@ const availablePassives = fs.readdirSync(join(__dirname, '../passives')).map(pas
 function run(client, message, arguments) {
     const embed = (new Discord.RichEmbed()).setFooter('modbot').setTimestamp()
     if (arguments.length === 0) {
-        message.reply('Please specify a passive!')
+        message.reply('Please specify a passive!').catch(() => {})
         return
     }
 
@@ -29,13 +29,13 @@ function run(client, message, arguments) {
         embed
             .setColor(0x009900)
             .setDescription(`${arguments[0]} is now **on**`)
-        message.reply({ embed })
+        message.reply({ embed }).catch(() => {})
     } else {
         redisClient.lrem(`passives:${message.guild.id}`, 0, arguments[0])
         embed
             .setColor(0x009900)
             .setDescription(`${arguments[0]} is now **off**`)
-        message.reply({ embed })
+        message.reply({ embed }).catch(() => {})
     }
 }
 

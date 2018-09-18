@@ -13,7 +13,7 @@ function run(client, message, arguments) {
                 embed
                     .setColor(0x990000)
                     .setDescription('Sorry! An error has occured.')
-                message.reply({ embed })
+                message.reply({ embed }).catch(() => {})
                 return
             }
 
@@ -27,7 +27,7 @@ function run(client, message, arguments) {
             embed
                 .setColor(0x00AE86)
                 .setDescription(infoBody)
-            message.reply({ embed })
+            message.reply({ embed }).catch(() => {})
             
         })
     } else {
@@ -38,7 +38,7 @@ function run(client, message, arguments) {
             embed
                 .setColor(0x990000)
                 .setDescription('No passive found.')
-            message.reply({ embed })
+            message.reply({ embed }).catch(() => {})
             return
         }
 
@@ -47,12 +47,12 @@ function run(client, message, arguments) {
             embed
                 .setColor(0x00AE86)
                 .setDescription(`**${arguments[0]}** has no special usage.`)
-            message.reply({ embed })
+            message.reply({ embed }).catch(() => {})
         } else {
             embed
                 .setColor(0x00AE86)
                 .setDescription(usage)
-            message.reply({ embed })
+            message.reply({ embed }).catch(() => {})
         }
     }
 }

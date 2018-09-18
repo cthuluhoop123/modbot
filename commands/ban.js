@@ -18,7 +18,7 @@ async function run(client, message, arguments) {
             embed
                 .setColor(0x990000)
                 .setDescription(`I don't have permission to ban ${member}!`)
-            message.channel.send({ embed })
+            message.channel.send({ embed }).catch(() => {})
             return
         }
 
@@ -27,13 +27,13 @@ async function run(client, message, arguments) {
             embed
                 .setColor(0x009900)
                 .setDescription(`Banned ${member.user.username}#${member.user.discriminator} (${member.displayName})`)
-            message.channel.send({ embed })
+            message.channel.send({ embed }).catch(() => {})
             return ban
         } catch (err) {
             embed
                 .setColor(0x990000)
                 .setDescription(`Failed to ban ${member.user.username}#${member.user.discriminator} (${member.displayName})`)
-            message.channel.send({ embed })
+            message.channel.send({ embed }).catch(() => {})
         }
 
     })

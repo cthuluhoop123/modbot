@@ -12,7 +12,7 @@ function run(client, message) {
             return swearList.includes(word)
         })
         if (hasSwears) {
-            message.delete()
+            message.delete().catch(() => {})
         }
         resolve()
     })

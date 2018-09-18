@@ -1,5 +1,5 @@
 function run(client, message, arguments) {
-    message.reply(`Pong! ${Date.now() - message.createdAt}ms`)
+    message.reply(`Pong! ${Date.now() - message.createdAt}ms`).catch(() => {})
 }
 
 const info = 'Pong!'
