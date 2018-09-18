@@ -29,7 +29,7 @@ client.on('ready', async () => {
 client.on('message', async message => {
 
     message.content = message.content.toLowerCase()
-    if (message.author.bot) { return }
+    if (message.author.bot || message.channel.type !== 'text') { return }
     if (!message.content.startsWith(config.prefix)) {
         try {
             let passives = await lrangeAsync(`passives:${message.guild.id}`, 0, -1)
