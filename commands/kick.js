@@ -3,7 +3,7 @@ const { prefix } = require('../config.js')
 
 async function run(client, message, arguments) {
     if (message.mentions.members.size === 0) {
-        message.reply('Please specify one or more users to kick.').catch(() => {})
+        message.reply('Please specify one or more users to kick.').catch(() => { })
         return
     }
     let reason = message.content.replace(/<@(!)?[0-9]{18}>/g, '').replace(`${prefix}kick`, '').trim()
@@ -15,22 +15,22 @@ async function run(client, message, arguments) {
             embed
                 .setColor(0x990000)
                 .setDescription(`I dont have permission to kick ${member}!`)
-            message.channel.send({ embed }).catch(() => {})
+            message.channel.send({ embed }).catch(() => { })
             return
         }
 
         try {
-            let kick = await member.kick(`Kicked by ${message.author.username}#${message.author.discriminator} (${message.member.displayName})${reason ? ': ' + reason : ''}`)
+            let kick = await member.kick(`Kicked by ${message.member.displayName} (${message.author.username}#${message.author.discriminator})${reason ? ': ' + reason : ''}`)
             embed
                 .setColor(0x009900)
-                .setDescription(`Kicked ${member.user.username}#${member.user.discriminator} (${member.displayName})`)
-            message.channel.send({ embed }).catch(() => {})
+                .setDescription(`Kicked ${member.displayName} (${member.user.username}#${member.user.discriminator})`)
+            message.channel.send({ embed }).catch(() => { })
             return kick
         } catch (err) {
             embed
                 .setColor(0x990000)
-                .setDescription(`Failed to kick ${member.user.username}#${member.user.discriminator} (${member.displayName})`)
-            message.channel.send({ embed }).catch(() => {})
+                .setDescription(`Failed to kick ${member.displayName} (${member.user.username}#${member.user.discriminator})`)
+            message.channel.send({ embed }).catch(() => { })
         }
     })
     await Promise.all(completeKick)
